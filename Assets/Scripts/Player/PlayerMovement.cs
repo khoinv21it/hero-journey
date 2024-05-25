@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-
 /**
     Class that manipulate movement of the character, A: left, D: right, W: jump, Shift: dash, Space: attack
 */
@@ -27,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 2f;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float startDashTime;
+
     //[SerializeField] private float dashCoolDown;
     private float dashTime;
     private float horizontalMove = 0f;
@@ -75,11 +75,10 @@ public class PlayerMovement : MonoBehaviour
     public HealthBar healthBar;
     public int maxHealth = 100;
     public int currentHealth;
-    
-
+    public GameObject gameOverPanel;
 
     // Debug dash distance
-    
+
     float distanceTravelled = 0;
     Vector3 lastPosition;
 
@@ -238,8 +237,6 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-
-
 
     private void Flip()
     {
@@ -400,11 +397,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("dying");
         StartCoroutine(WaitForDieAnimation());
 
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+
     }
 
     IEnumerator WaitForDieAnimation()
     {
-       yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f);
         this.gameObject.SetActive(false);
     }
 

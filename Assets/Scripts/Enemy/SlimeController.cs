@@ -15,7 +15,7 @@ public class SlimeController : MonoBehaviour
     void Start()
     {
        // 
-       animator = GetComponent<Animator>();
+      animator = GetComponent<Animator>();
       currentHealth = maxHealth;
      healthBar.SetMaxHealth(maxHealth);
     }
@@ -42,8 +42,6 @@ public class SlimeController : MonoBehaviour
             animator.SetTrigger("hurt");
             StartCoroutine(WaitForHurtAnimation());
         }
-
-
     }
 
     void Die()

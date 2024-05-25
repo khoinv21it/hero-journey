@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class LevelControl : MonoBehaviour
 {
@@ -49,13 +49,8 @@ public class LevelControl : MonoBehaviour
                         this.gameObject.transform.Find("Level 3").gameObject.SetActive(true);
                         break;
                     case 3:
+                        //show panel win
                         this.gameObject.transform.Find("Level 4").gameObject.SetActive(true);
-                        break;
-                    case 4:
-                        this.gameObject.transform.Find("Level 5").gameObject.SetActive(true);
-                        break;
-                    case 5:
-                        this.gameObject.transform.Find("Level 6").gameObject.SetActive(true);
                         break;
                 }
             }
@@ -63,4 +58,9 @@ public class LevelControl : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
     }
     
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

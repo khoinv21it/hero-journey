@@ -49,18 +49,6 @@ public class SelectLevel : MonoBehaviour
                 this.transform.parent.gameObject.GetComponent<LevelControl>().levelArray[3] = 1;
                 this.gameObject.SetActive(false);
                 break;
-            case "5":
-                const string level5 = "Level " + "5";
-                SceneManager.LoadScene(level5);
-                this.transform.parent.gameObject.GetComponent<LevelControl>().levelArray[4] = 1;
-                this.gameObject.SetActive(false);
-                break;
-            case "6":
-                const string level6 = "Level " + "6";
-                SceneManager.LoadScene(level6);
-                this.transform.parent.gameObject.GetComponent<LevelControl>().levelArray[5] = 1;
-                this.gameObject.SetActive(false);
-                break;
             default:
                 break;
         }

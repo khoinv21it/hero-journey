@@ -99,9 +99,7 @@ public class EnemyMovement : MonoBehaviour
         } else {
             animator.SetTrigger("hurt");
             StartCoroutine(WaitForHurtAnimation());
-        }
-
-        
+        }    
     }
 
     void Die() 
